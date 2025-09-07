@@ -1,25 +1,15 @@
 # PSDTA
 
+conda create --name psdta python=3.8
+conda install pytorch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0 pytorch-cuda=11.7 -c pytorch -c nvidia
+conda install pyg -c pyg
+conda install -c conda-forge rdkit==2022.09.5
+pip install scipy biopython pandas biopandas timeout_decorator py3Dmol umap-learn plotly mplcursors lifelines reprint
+pip install "saprot"
 
 
-dgl	1.1.0	
-distlib	0.3.8
-fair-esm	2.0.0
-numpy	1.24.3
-pandas	2.0.3	
-pytorch-lightning	2.3.3
-scikit-learn	1.3.0
-seaborn	0.13.2	0.13.2
-torch	2.0.0
-torch-cluster	1.6.3+pt20cu118
-torch-geometric	2.5.2
-torch-scatter	2.1.2+pt20cu118
-torch-sparse	0.6.18+pt20cu118
-torch-spline-conv	1.2.2+pt20cu118
-torchaudio	2.0.0
-torchdata	0.8.0
-torchmetrics	1.4.2
-torchvision	0.15.0
-tqdm	4.66.4
-triton	2.0.0
-wandb	0.18.3
+
+Create a train, valid and test csv file in a datafolde. The datafolder should contain at least a train.csv , valid.csv and test.csv file. 
+
+For PDBBind v2016:
+python main.py --datafolder dataset/pdb2016 --result_path result/PDB2016
