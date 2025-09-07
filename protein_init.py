@@ -14,42 +14,6 @@ from torch_geometric.utils import degree, add_self_loops, subgraph, to_undirecte
 import networkx as nx
 import math
 
-
-# def protein_init(seqs):
-#     result_dict = {} #初始化空字典
-#     model_location = "esm2_t33_650M_UR50D"
-#     model, alphabet = esm.pretrained.load_model_and_alphabet(model_location) #使用 ESM2 库加载指定的预训练模型及其对应的字母表 alphabet。
-#     model.eval()
-#     if torch.cuda.is_available():
-#         model = model.cuda()
-#     batch_converter = alphabet.get_batch_converter()
-#
-#     for seq in tqdm(seqs):
-#         seq_feat = seq_feature(seq) #序列特征。形状为（氨基酸数量*33）
-#
-#         #token_repr：形状为（氨基酸数量*1280）
-#         #contact_map_proba：形状为（氨基酸数量*氨基酸数量）
-#         #logits：形状为（氨基酸数量*layer(33)） 表示分类得分
-#         token_repr, contact_map_proba, logits = esm_extract(model, batch_converter, seq, layer=33, approach='last',dim=1280)
-#
-#         assert len(contact_map_proba) == len(seq)
-#
-#         #edge_index：连接的氨基酸索引，形状为(连接氨基酸成对数*2)
-#         #edge_weight：连接的氨基酸权重，形状为(1*连接氨基酸成对数)
-#         edge_index, edge_weight = contact_map(contact_map_proba)
-#
-#         result_dict[seq] = {
-#             'seq':seq,
-#             'seq_feat':torch.from_numpy(seq_feat),
-#             'token_representation':token_repr.half(),#half:（16-bit 浮点数）
-#             'num_nodes': len(seq),
-#             'num_pos':torch.arange(len(seq)).reshape(-1,1), #序列中每个位置的索引.形状为 (序列长度, 1)
-#             'edge_index': edge_index,
-#             'edge_weight':  edge_weight,
-#         }
-#
-#     return result_dict
-
 from utils.esm_loader import load_esm_saprot
 from utils.foldseek_util import get_struc_seq
 import os
@@ -330,11 +294,6 @@ def esm_extract(model, batch_converter, seq, layer=36, approach='mean', dim=2560
             contact_prob_map[start:end, start:end] = contact_prob_map[start:end, start:end] + results["contacts"][
                 0].cpu().numpy()
             contact_prob_map[row, col] = contact_prob_map[row, col] / 2.0
-
-            # # logits = results["logits"][0].cpu().numpy()[1: len(seq) + 1]
-            # amino_acid_len = len(temp_seq) // 2
-            # logits[start:end] += results['logits'][0].cpu().numpy()[1: amino_acid_len + 1]
-            # logits[row] = logits[row] / 2.0
 
             ## TOKEN
             subtoken_repr = torch.cat([results['representations'][i] for i in range(1, layer + 1)])
