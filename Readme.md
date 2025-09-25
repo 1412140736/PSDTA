@@ -1,6 +1,6 @@
 # PSDTA: An approach to drug-target binding affinity prediction by integrating physicochemical and structural information to reduce feature redundancy
 
-![Figure. 2](C:\Users\limao\Desktop\论文-桌面\期刊-bib\png图片\Figure. 2.png)
+![Figure. 2](Figure. 2.png)
 
 ## PSDTA Environment Setup for Local Deployment
 
@@ -42,6 +42,7 @@ python main.py --dataf
 ```
 python main.py --datafolder dataset/pdb2016 --result_path result/PDB2016_BENCHMARK
 ```
+
 
 
 
