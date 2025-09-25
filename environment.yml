@@ -400,4 +400,5 @@ dependencies:
       - webencodings==0.5.1
       - widgetsnbextension==4.0.14
       - wrapt==1.16.0
-prefix: /home/aita8180/anaconda3/envs/PSI
+prefix: /home/aita8180/anaconda3/envs/PSDTA
+
