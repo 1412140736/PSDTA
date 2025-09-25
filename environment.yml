@@ -1,4 +1,4 @@
-name: PSI
+name: PSDTA
 channels:
   - pyg
   - bioconda
