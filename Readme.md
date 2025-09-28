@@ -31,7 +31,7 @@ python main.py --datafolder dataset/pdb2016 --result_path result/PDB2016_BENCHMA
 
 1、Create the virtual environment
 
-2、Prepare the CSV dataset and the corresponding protein PDB files, and place them in the designated locations(The data files required for training have been uploaded to aliyundrive and can be downloaded for training. The link is: https://www.alipan.com/s/CvPgwCCtFVp)
+2、Prepare the CSV dataset and the corresponding protein PDB files, and place them in the designated locations(The data files required for training have been uploaded to aliyundrive and can be downloaded for training. The link is: https://drive.google.com/drive/folders/11R0lLxFyWMlpQtQhCqC3d529le3oZS3n?usp=drive_link)
 
 3、Start training
 
@@ -42,6 +42,7 @@ python main.py --dataf
 ```
 python main.py --datafolder dataset/pdb2016 --result_path result/PDB2016_BENCHMARK
 ```
+
 
 
 
